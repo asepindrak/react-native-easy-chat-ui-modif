@@ -524,7 +524,7 @@ const styles = StyleSheet.create({
   },
   chat: {
     paddingHorizontal: 10,
-    paddingVertical: 14,
+    paddingVertical: 0,
   },
   right: {
     flexDirection: "row-reverse",

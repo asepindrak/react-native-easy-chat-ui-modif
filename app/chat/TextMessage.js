@@ -36,7 +36,10 @@ export default class TextMessage extends PureComponent {
     const msgBg = "#241f6e";
     return (
       <View
-        style={[isSelf ? styles.right : styles.left]}
+        style={[
+          isSelf ? styles.right : styles.left,
+          { marginTop: 0, marginBottom: 0 },
+        ]}
         collapsable={false}
         ref={(e) => (this[`item_${this.props.rowId}`] = e)}
       >
@@ -108,15 +111,24 @@ export default class TextMessage extends PureComponent {
             >
               {views}
             </View>
+            <View
+              style={{
+                flexDirection: "row",
+                textAlign: "right",
+                alignItems: "flex-end",
+                alignContent: "flex-end",
+              }}
+            >
+              <Text
+                style={[
+                  { textAlign: "right", fontSize: 11, color: "#aaa" },
+                  isReadStyle,
+                ]}
+              >
+                {getCurrentTime(parseInt(message.time))}
+              </Text>
+            </View>
           </View>
-          <Text
-            style={[
-              { textAlign: "right", fontSize: 11, color: "#ccc" },
-              isReadStyle,
-            ]}
-          >
-            {getCurrentTime(parseInt(message.time))}
-          </Text>
           {chatType !== "group" && isSelf && showIsRead && (
             <Text style={[{ textAlign: "right", fontSize: 13 }, isReadStyle]}>
               {this.props.lastReadAt && this.props.lastReadAt - message.time > 0
@@ -166,8 +178,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexWrap: "wrap",
     borderRadius: 12,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
+    paddingHorizontal: 9,
+    paddingVertical: 5,
     maxWidth: width - 160,
     minHeight: 20,
   },
