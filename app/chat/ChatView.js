@@ -52,6 +52,7 @@ class ChatWindow extends PureComponent {
     this.isInverted = false;
     this.rootHeight = 0;
     this.androidHasAudioPermission = false;
+    var newTime = 0;
     this.state = {
       messageContent: "",
       cursorIndex: 0,
@@ -81,7 +82,6 @@ class ChatWindow extends PureComponent {
       messageSelected: [],
       currentIndex: -1,
       pressIndex: -1,
-      newTime: 0,
     };
   }
 
@@ -1234,58 +1234,52 @@ ChatWindow.defaultProps = {
   renderMessageTime: (time) => {
     var today = new Date().setHours(0, 0, 0, 0);
     var thatDay = new Date(time).setHours(0, 0, 0, 0);
-
-    if (today === thatDay) {
-      this.setState({
-        newTime: thatDay,
-      });
-      return (
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            paddingTop: 0,
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "#e6e6e6",
-              paddingVertical: 0,
-              paddingHorizontal: 8,
-              borderRadius: 16,
-            }}
-          >
-            <Text style={{ color: "#333", fontSize: 10 }}>Today</Text>
-          </View>
-        </View>
-      );
-    } else {
-      this.setState({
-        newTime: thatDay,
-      });
-      return (
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            paddingTop: 0,
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "#e6e6e6",
-              paddingVertical: 0,
-              paddingHorizontal: 8,
-              borderRadius: 16,
-            }}
-          >
-            <Text style={{ color: "#333", fontSize: 10 }}>
-              {this.state.newTime}
-            </Text>
-          </View>
-        </View>
-      );
-    }
+    return <Text></Text>;
+    // if (today === thatDay) {
+    //   newTime = thatDay;
+    //   return (
+    //     <View
+    //       style={{
+    //         justifyContent: "center",
+    //         alignItems: "center",
+    //         paddingTop: 0,
+    //       }}
+    //     >
+    //       <View
+    //         style={{
+    //           backgroundColor: "#e6e6e6",
+    //           paddingVertical: 0,
+    //           paddingHorizontal: 8,
+    //           borderRadius: 16,
+    //         }}
+    //       >
+    //         <Text style={{ color: "#333", fontSize: 10 }}>Today</Text>
+    //       </View>
+    //     </View>
+    //   );
+    // } else {
+    //   newTime = thatDay;
+    //   return (
+    //     <View
+    //       style={{
+    //         justifyContent: "center",
+    //         alignItems: "center",
+    //         paddingTop: 0,
+    //       }}
+    //     >
+    //       <View
+    //         style={{
+    //           backgroundColor: "#e6e6e6",
+    //           paddingVertical: 0,
+    //           paddingHorizontal: 8,
+    //           borderRadius: 16,
+    //         }}
+    //       >
+    //         <Text style={{ color: "#333", fontSize: 10 }}>{newTime}</Text>
+    //       </View>
+    //     </View>
+    //   );
+    // }
   },
   placeholder: "请输入...",
   pressInText: "按住 说话",
