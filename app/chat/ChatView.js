@@ -523,7 +523,13 @@ class ChatWindow extends PureComponent {
       view.measure((x, y, width, height, pageX, pageY) => {
         let items = null;
         if (this.props.setPopItems) {
-          items = this.props.setPopItems(type, index, text, message);
+          items = this.props.setPopItems(
+            type,
+            index,
+            text,
+            message,
+            this.chatList
+          );
         } else {
           items = [
             {
@@ -865,6 +871,9 @@ class ChatWindow extends PureComponent {
                   selectMultiple={this.selectMultiple}
                   rowId={index}
                   popShow={this.show}
+                  setRef={(ref) => {
+                    this.props.setRef(this.chatList);
+                  }}
                   messageSelectIcon={this.props.messageSelectIcon}
                   renderMessageTime={this.props.renderMessageTime}
                   onMessageLongPress={this.show}
@@ -1040,6 +1049,7 @@ ChatWindow.propTypes = {
     PropTypes.string,
   ]),
   onScroll: PropTypes.func,
+  setRef: PropTypes.any,
   onEndReachedThreshold: PropTypes.number,
   chatWindowStyle: ViewPropTypes.style,
   sendMessage: PropTypes.func,
@@ -1194,6 +1204,7 @@ ChatWindow.defaultProps = {
   panelSource: [],
   renderPanelRow: () => {},
   onScroll: () => {},
+  setRef: () => {},
   renderErrorMessage: (messageStatus) => {
     switch (messageStatus) {
       case -1:

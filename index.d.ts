@@ -100,6 +100,7 @@ export interface ChatScreenPropsType {
    * 同FlatList属性
    */
   onScroll?: () => void;
+  setRef?: any;
   /**
    * 同FlatList属性
    */
