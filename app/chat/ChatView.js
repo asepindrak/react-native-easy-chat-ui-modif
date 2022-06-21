@@ -831,7 +831,7 @@ class ChatWindow extends PureComponent {
             <FlatList
               {...this.props.flatListProps}
               ref={(e) => (this.chatList = e)}
-              contentContainerStyle={{ paddingBottom: 60, paddingTop: 30 }}
+              contentContainerStyle={{ paddingBottom: 120, paddingTop: 30 }}
               inverted={inverted}
               data={currentList}
               ListFooterComponent={this.props.renderLoadEarlier}
