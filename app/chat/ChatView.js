@@ -1048,7 +1048,7 @@ ChatWindow.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
-  onScroll: PropTypes.func,
+  onScroll: PropTypes.any,
   setRef: PropTypes.any,
   onEndReachedThreshold: PropTypes.number,
   chatWindowStyle: ViewPropTypes.style,
