@@ -83,6 +83,13 @@ export default class ImageMessage extends PureComponent {
                 },
               ]}
             />
+            {message.content.text ? (
+              <Text
+                style={[{ textAlign: "left", fontSize: 12, color: "#222" }]}
+              >
+                {message.content.text}
+              </Text>
+            ) : null}
             <Text
               style={[
                 { textAlign: "right", fontSize: 11, color: "#ccc" },
