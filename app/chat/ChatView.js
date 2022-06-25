@@ -857,6 +857,7 @@ class ChatWindow extends PureComponent {
               }}
               renderItem={({ item, index }) => (
                 <ChatItem
+                  key={index}
                   ImageComponent={ImageComponent}
                   ref={(e) => (this.messageItem = e)}
                   user={this.props.userProfile}
