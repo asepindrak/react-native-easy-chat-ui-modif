@@ -1,4 +1,4 @@
-import smile from "./weixiao.png";
+import smile from "./smile.png";
 import grinning from "./grinning.png";
 import thumbs from "./thumbs.png";
 import folded from "./folded.png";
