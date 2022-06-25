@@ -112,7 +112,7 @@ export default class TextMessage extends PureComponent {
                 </Text>
               </View>
             ) : null}
-            {message.reply != "" ? (
+            {message.reply !== null ? (
               <View
                 style={{
                   textAlign: "left",
