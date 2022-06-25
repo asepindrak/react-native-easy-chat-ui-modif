@@ -34,6 +34,14 @@ export default class TextMessage extends PureComponent {
       nickName,
     } = this.props;
     const msgBg = "#241f6e";
+
+    const msgReplyBg = "#2d3580";
+    const leftMessageReplyBackground = "#eee";
+    const msgReplyColor = "#eee";
+    const leftMessageReplyColor = "#555";
+    const msgReplyNickColor = "#ccc";
+    const leftMessageReplyNickColor = "#777";
+
     return (
       <View
         style={[
@@ -95,10 +103,63 @@ export default class TextMessage extends PureComponent {
                 }}
               >
                 <Text
-                  style={[styles.userName, { fontSize: 12, color: "#bbb" }]}
+                  style={[
+                    styles.userName,
+                    { fontSize: 12, color: "#bbb", fontWeight: "bold" },
+                  ]}
                 >
                   {message.chatInfo.nickName}
                 </Text>
+              </View>
+            ) : null}
+            {message.reply != "" ? (
+              <View
+                style={{
+                  textAlign: "left",
+                  alignItems: "flex-start",
+                  alignContent: "flex-start",
+                  borderRadius: 5,
+                  backgroundColor: isSelf
+                    ? msgReplyBg
+                    : leftMessageReplyBackground,
+                  padding: 5,
+                }}
+              >
+                <View
+                  style={{
+                    alignSelf: "flex-start",
+                    alignContent: "flex-start",
+                    alignItems: "flex-start",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Text
+                    style={[
+                      styles.userName,
+                      {
+                        fontSize: 11,
+                        color: isSelf
+                          ? msgReplyNickColor
+                          : leftMessageReplyNickColor,
+                        fontWeight: "bold",
+                      },
+                    ]}
+                  >
+                    {message.reply.chatInfo.nickName}
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    numberOfLines={3}
+                    ellipsizeMode="tail"
+                    style={{
+                      fontSize: 12,
+                      color: isSelf ? msgReplyColor : leftMessageReplyColor,
+                    }}
+                  >
+                    {message.reply.chat}
+                  </Text>
+                </View>
               </View>
             ) : null}
             <View

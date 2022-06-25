@@ -23,6 +23,19 @@ export default class ImageMessage extends PureComponent {
       isReadStyle,
       ImageComponent,
     } = this.props;
+
+    const msgBg = "#241f6e";
+    const leftMessageBackground = "#fff";
+    const msgColor = "#fff";
+    const leftMessageColor = "#222";
+
+    const msgReplyBg = "#2d3580";
+    const leftMessageReplyBackground = "#eee";
+    const msgReplyColor = "#eee";
+    const leftMessageReplyColor = "#555";
+    const msgReplyNickColor = "#ccc";
+    const leftMessageReplyNickColor = "#777";
+
     return (
       <View style={[isSelf ? styles.right : styles.left]}>
         <TouchableOpacity
@@ -65,7 +78,12 @@ export default class ImageMessage extends PureComponent {
                 <Text
                   style={[
                     styles.userName,
-                    { fontSize: 12, color: "#ccc", alignSelf: "flex-start" },
+                    {
+                      fontSize: 12,
+                      color: "#ccc",
+                      alignSelf: "flex-start",
+                      fontWeight: "bold",
+                    },
                   ]}
                 >
                   {message.chatInfo.nickName}
@@ -79,33 +97,105 @@ export default class ImageMessage extends PureComponent {
                   width: 230,
                   height:
                     message.content.height / (message.content.width / 230),
-                  borderRadius: 5,
+                  borderTopLeftRadius: 10,
+                  borderTopRightRadius: 10,
                 },
               ]}
             />
-            {message.content.text ? (
-              <Text
-                style={[{ textAlign: "left", fontSize: 12, color: "#222" }]}
-              >
-                {message.content.text}
-              </Text>
-            ) : null}
-            <Text
-              style={[
-                { textAlign: "right", fontSize: 11, color: "#ccc" },
-                isReadStyle,
-              ]}
+            <View
+              style={{
+                textAlign: "left",
+                alignItems: "flex-start",
+                alignContent: "flex-start",
+                borderBottomLeftRadius: 10,
+                borderBottomRightRadius: 10,
+                backgroundColor: isSelf ? msgBg : leftMessageBackground,
+                padding: 5,
+              }}
             >
-              {getCurrentTime(parseInt(message.time))}
-            </Text>
-            {showIsRead && chatType !== "group" && isSelf && (
-              <Text style={[{ textAlign: "right", fontSize: 13 }, isReadStyle]}>
-                {this.props.lastReadAt &&
-                this.props.lastReadAt - message.time > 0
-                  ? "已读"
-                  : "未读"}
+              {message.reply != "" ? (
+                <View
+                  style={{
+                    textAlign: "left",
+                    alignItems: "flex-start",
+                    alignContent: "flex-start",
+                    borderRadius: 5,
+                    backgroundColor: isSelf
+                      ? msgReplyBg
+                      : leftMessageReplyBackground,
+                    padding: 5,
+                  }}
+                >
+                  <View
+                    style={{
+                      alignSelf: "flex-start",
+                      alignContent: "flex-start",
+                      alignItems: "flex-start",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Text
+                      style={[
+                        styles.userName,
+                        {
+                          fontSize: 11,
+                          color: isSelf
+                            ? msgReplyNickColor
+                            : leftMessageReplyNickColor,
+                          fontWeight: "bold",
+                        },
+                      ]}
+                    >
+                      {message.reply.chatInfo.nickName}
+                    </Text>
+                  </View>
+                  <View>
+                    <Text
+                      numberOfLines={3}
+                      ellipsizeMode="tail"
+                      style={{
+                        fontSize: 12,
+                        color: isSelf ? msgReplyColor : leftMessageReplyColor,
+                      }}
+                    >
+                      {message.reply.chat}
+                    </Text>
+                  </View>
+                </View>
+              ) : null}
+              {message.content.text ? (
+                <Text
+                  style={[
+                    {
+                      textAlign: "left",
+                      fontSize: 12,
+                      color: isSelf ? msgColor : leftMessageColor,
+                    },
+                  ]}
+                >
+                  {message.content.text}
+                </Text>
+              ) : null}
+              <Text
+                style={[
+                  { textAlign: "right", fontSize: 11, color: "#ccc" },
+                  isReadStyle,
+                ]}
+              >
+                {getCurrentTime(parseInt(message.time))}
               </Text>
-            )}
+
+              {showIsRead && chatType !== "group" && isSelf && (
+                <Text
+                  style={[{ textAlign: "right", fontSize: 13 }, isReadStyle]}
+                >
+                  {this.props.lastReadAt &&
+                  this.props.lastReadAt - message.time > 0
+                    ? "已读"
+                    : "未读"}
+                </Text>
+              )}
+            </View>
           </View>
         </TouchableOpacity>
         <View
