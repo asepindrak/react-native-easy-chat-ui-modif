@@ -113,7 +113,7 @@ export default class ImageMessage extends PureComponent {
                 padding: 5,
               }}
             >
-              {message.reply != "" ? (
+              {message.reply !== null ? (
                 <View
                   style={{
                     textAlign: "left",
