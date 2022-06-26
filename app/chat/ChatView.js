@@ -1044,7 +1044,7 @@ ChatWindow.propTypes = {
   /* defaultProps */
   messageList: PropTypes.array.isRequired,
   inverted: PropTypes.bool,
-  isIPhoneX: PropTypes.bool.isRequired,
+  isIPhoneX: PropTypes.bool,
   lastReadAt: PropTypes.object,
   chatBackgroundImage: PropTypes.oneOfType([
     PropTypes.number,
