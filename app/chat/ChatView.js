@@ -40,7 +40,7 @@ class ChatWindow extends PureComponent {
     ImageComponent = CustomImageComponent || Image;
     this._userHasBeenInputed = false;
     this.iosHeaderHeight = 64;
-    this.isIphoneX = isIPhoneX;
+    this.isIphoneX = true;
     this.visibleHeight = new Animated.Value(0);
     this.panelHeight = new Animated.Value(0);
     this.leftHeight = new Animated.Value(0);
