@@ -83,7 +83,7 @@ const default_emoji = () => {
     key: 104,
     value: "/{del}",
   });
-  return [page0, page1, page2, page3, page4];
+  return [page0];
 };
 
 export const DEFAULT_EMOJI = default_emoji();
