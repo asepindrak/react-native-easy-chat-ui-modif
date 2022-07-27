@@ -422,13 +422,13 @@ export default class ChatItem extends PureComponent {
     const Element = isOpen ? TouchableWithoutFeedback : View;
     const showName = chatType === "group" && showUserName && type !== "system";
     return (
-      <View style={{marginTop:3}}>
+      <View style={{ marginTop: 3 }}>
         <Element
           onPress={() => {
             this.setState({ isSelect: !this.state.isSelect });
             selectMultiple(!this.state.isSelect, parseInt(rowId), message);
           }}
-        > 
+        >
           <View>
             {/* {type === "system" ? null : (
               <TouchableOpacity activeOpacity={1}>
@@ -525,7 +525,7 @@ const styles = StyleSheet.create({
   chat: {
     paddingHorizontal: 5,
     paddingVertical: 0,
-    marginTop:0
+    marginTop: 0,
   },
   right: {
     flexDirection: "row-reverse",
