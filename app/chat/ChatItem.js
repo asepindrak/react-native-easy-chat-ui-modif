@@ -422,21 +422,21 @@ export default class ChatItem extends PureComponent {
     const Element = isOpen ? TouchableWithoutFeedback : View;
     const showName = chatType === "group" && showUserName && type !== "system";
     return (
-      <View>
+      <View style={{marginTop:3}}>
         <Element
           onPress={() => {
             this.setState({ isSelect: !this.state.isSelect });
             selectMultiple(!this.state.isSelect, parseInt(rowId), message);
           }}
-        >
+        > 
           <View>
-            {type === "system" ? null : (
+            {/* {type === "system" ? null : (
               <TouchableOpacity activeOpacity={1}>
                 {message.renderTime
                   ? this.props.renderMessageTime(message.time)
                   : null}
               </TouchableOpacity>
-            )}
+            )} */}
             <TouchableOpacity
               onPress={() => this.props.closeAll()}
               disabled={isOpen}
@@ -523,8 +523,9 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
   },
   chat: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
     paddingVertical: 0,
+    marginTop:0
   },
   right: {
     flexDirection: "row-reverse",
@@ -540,7 +541,7 @@ const styles = StyleSheet.create({
     minHeight: 30,
   },
   avatar: {
-    marginLeft: 8,
+    marginLeft: 2,
     borderRadius: 24,
     width: 30,
     height: 30,
